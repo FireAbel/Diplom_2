@@ -43,8 +43,9 @@ class DataManagerHelper:
             "password": password,
             "name": name
         }
-        response = requests.post(f"{self.base_url}/auth/register", json=user_data)
-        return user_data, response
+
+        register_response = requests.post(f"{self.base_url}/auth/register", json=user_data)
+        return user_data, register_response
 
     def login_test_user(self, email, password):
         login_data = {
@@ -60,10 +61,6 @@ class DataManagerHelper:
                 self.ingredients = response.json()
         return self.ingredients
 
-    def cleanup(self):
-        # Здесь можно добавить логику очистки тестовых данных, если необходимо
-        pass
-
     @staticmethod
     def generate_random_email():
         return f"test_{random.randint(1000, 9999)}@example.com"
@@ -75,3 +72,6 @@ class DataManagerHelper:
     @staticmethod
     def generate_random_name():
         return f"Test User {random.randint(1000, 9999)}"
+
+    def cleanup(self):
+        pass

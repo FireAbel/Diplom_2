@@ -1,27 +1,27 @@
 import requests
 from urls import Endpoints
-from generators import generate_user_data
+from generators import UserDataGenerator
 
 class UserMethods:
     @staticmethod
     def register_user():
-        user_data = generate_user_data()
+        user_data = UserDataGenerator.generate_user_data()
         response = requests.post(Endpoints.REGISTER, json=user_data)
         return response, user_data
 
     @staticmethod
     def login_user(email, password):
-        credentials = {
+        login_data = {
             "email": email,
             "password": password
         }
-        response = requests.post(Endpoints.LOGIN, json=credentials)
+        response = requests.post(Endpoints.LOGIN, json=login_data)
         return response
 
     @staticmethod
-    def update_user_data(token, new_data):
-        headers = {'Authorization': token}
-        response = requests.patch(Endpoints.USER, json=new_data, headers=headers)
+    def update_user_data(access_token, user_data):
+        headers = {'Authorization': f'Bearer {access_token}'}
+        response = requests.patch(Endpoints.USER, json=user_data, headers=headers)
         return response
 
     @staticmethod

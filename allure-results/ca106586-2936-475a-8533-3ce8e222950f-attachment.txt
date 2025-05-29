@@ -1,0 +1,13 @@
+
+Попытка 1 регистрации
+Email: test_6844@example.com
+Регистрация: 403
+Ответ регистрации: {"success":false,"message":"User already exists"}
+
+Попытка 2 регистрации
+Email: test_2810@example.com
+Регистрация: 200
+Ответ регистрации: {"success":true,"user":{"email":"test_2810@example.com","name":"Test User 2405"},"accessToken":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MzhlODZmOWVkMjgwMDAxYjYwMmIyZCIsImlhdCI6MTc0ODU1OTk4MywiZXhwIjoxNzQ4NTYxMTgzfQ.0eCwuVeIYYXhf1cue5AdY1-bNcGLQUA2G2-389MnCEI","refreshToken":"63ad939a142fe8e6ec5bf1949f6743deeb1b74c17eb8292f97d3557a7692ca48985e7af1ac947ff5"}
+Авторизация: 200
+Ответ авторизации: {"success":true,"accessToken":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MzhlODZmOWVkMjgwMDAxYjYwMmIyZCIsImlhdCI6MTc0ODU1OTk4MywiZXhwIjoxNzQ4NTYxMTgzfQ.0eCwuVeIYYXhf1cue5AdY1-bNcGLQUA2G2-389MnCEI","refreshToken":"2ec54d4bfa09bc584cb0336111b98814a5b8ce128bede2e3c7f01b5cce8b411ab877e548bddb775a","user":{"email":"test_2810@example.com","name":"Test User 2405"}}
+Заголовки: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MzhlODZmOWVkMjgwMDAxYjYwMmIyZCIsImlhdCI6MTc0ODU1OTk4MywiZXhwIjoxNzQ4NTYxMTgzfQ.0eCwuVeIYYXhf1cue5AdY1-bNcGLQUA2G2-389MnCEI'}

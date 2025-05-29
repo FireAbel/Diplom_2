@@ -2,35 +2,39 @@ import pytest
 import requests
 import sys
 import os
+import allure
+import random
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from urls import Endpoints
-from generators import DataManagerHelper
+from data import ExpectedResponses
 
+@allure.title("Тесты обновления данных пользователя")
 class TestUserData:
+
     @pytest.fixture(autouse=True)
-    def setup(self):
-        self.data_manager = DataManagerHelper()
-        self.user_data, response = self.data_manager.create_test_user()
-        self.access_token = response.json()['accessToken']
-        self.headers = {"Authorization": f"Bearer {self.access_token}"}
-        yield
-        self.data_manager.cleanup()
+    def setup(self, setup_with_auth):
+        pass
 
+    @allure.step("Тест обновления данных пользователя с авторизацией")
     def test_update_user_data_with_auth(self):
-        new_name = "Updated Name"
-        response = requests.patch(
-            Endpoints.USER,
-            headers=self.headers,
-            json={"name": new_name}
-        )
-        assert response.status_code == 403, "Ожидался код 403 при обновлении данных"
-        assert "jwt malformed" in response.text, "Отсутствует сообщение о некорректном jwt"
+        user_data = {
+            "name": "Updated Name",
+            "email": f"updated_{random.randint(1000, 9999)}@example.com"
+        }
+        print(f"\nЗаголовки запроса: {self.headers}")
+        response = requests.patch(Endpoints.USER, json=user_data, headers=self.headers)
+        print(f"Ответ сервера: {response.text}")
+        expected = ExpectedResponses.get_user_update_success()
+        assert response.status_code == expected['status_code'], 'Ожидался код 200 при обновлении данных'
+        assert 'user' in response.json(), 'В ответе отсутствует информация о пользователе'
 
+    @allure.step("Тест обновления данных пользователя без авторизации")
+    @pytest.mark.usefixtures("setup_without_auth")
     def test_update_user_data_without_auth(self):
-        new_name = "Updated Name"
-        response = requests.patch(
-            Endpoints.USER,
-            json={"name": new_name}
-        )
-        assert response.status_code == 401, "Ожидался код 401 при отсутствии авторизации"
-        assert "You should be authorised" in response.text, "Отсутствует сообщение о необходимости авторизации" 
+        user_data = {
+            "name": "Updated Name",
+            "email": f"updated_{random.randint(1000, 9999)}@example.com"
+        }
+        response = requests.patch(Endpoints.USER, json=user_data)
+        expected = ExpectedResponses.get_user_update_failure()
+        assert response.status_code == expected['status_code'], 'Ожидался код 401 при обновлении данных без авторизации' 

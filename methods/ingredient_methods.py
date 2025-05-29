@@ -8,6 +8,11 @@ class IngredientMethods:
         return response
 
     @staticmethod
+    def get_ingredient_by_id(ingredient_id):
+        response = requests.get(f"{Endpoints.BASE_URL}/ingredients/{ingredient_id}")
+        return response
+
+    @staticmethod
     def get_valid_ingredients():
         response = requests.get(Endpoints.BASE_URL + '/ingredients')
         if response.status_code == 200:

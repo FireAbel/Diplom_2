@@ -1,7 +1,3 @@
-"""
-Модуль с тестовыми данными и ожидаемыми ответами для API тестов.
-"""
-
 # Ожидаемые коды ответов
 class StatusCodes:
     OK = 200
@@ -27,10 +23,24 @@ class ResponseFields:
 # Тестовые данные для регистрации
 class RegistrationData:
     @staticmethod
-    def get_invalid_data():
+    def get_invalid_data_without_email():
         return {
             'password': 'test_password',
             'name': 'Test User'
+        }
+
+    @staticmethod
+    def get_invalid_data_without_password():
+        return {
+            'email': 'test@example.com',
+            'name': 'Test User'
+        }
+
+    @staticmethod
+    def get_invalid_data_without_name():
+        return {
+            'email': 'test@example.com',
+            'password': 'test_password'
         }
 
 # Тестовые данные для заказов
@@ -63,62 +73,85 @@ class ExpectedResponses:
     @staticmethod
     def get_registration_success():
         return {
-            'status_code': StatusCodes.OK,
-            'required_fields': [ResponseFields.ACCESS_TOKEN]
+            'status_code': 200,
+            'message': 'User successfully registered',
+            'required_fields': ['accessToken', 'user']
+        }
+
+    @staticmethod
+    def get_registration_failure():
+        return {
+            'status_code': 403,
+            'message': ErrorMessages.REQUIRED_FIELDS
         }
 
     @staticmethod
     def get_registration_user_exists():
         return {
-            'status_code': StatusCodes.FORBIDDEN,
+            'status_code': 403,
             'error_message': ErrorMessages.USER_EXISTS
-        }
-
-    @staticmethod
-    def get_registration_missing_fields():
-        return {
-            'status_code': StatusCodes.FORBIDDEN,
-            'error_message': ErrorMessages.REQUIRED_FIELDS
         }
 
     @staticmethod
     def get_login_success():
         return {
-            'status_code': StatusCodes.OK,
-            'required_fields': [ResponseFields.ACCESS_TOKEN]
+            'status_code': 200,
+            'message': 'User successfully logged in',
+            'required_fields': ['accessToken', 'user']
+        }
+
+    @staticmethod
+    def get_login_failure():
+        return {
+            'status_code': 401,
+            'message': ErrorMessages.INVALID_CREDENTIALS
         }
 
     @staticmethod
     def get_login_invalid_credentials():
         return {
-            'status_code': StatusCodes.UNAUTHORIZED,
+            'status_code': 401,
             'error_message': ErrorMessages.INVALID_CREDENTIALS
         }
 
     @staticmethod
     def get_order_creation_success():
         return {
-            'status_code': StatusCodes.UNAUTHORIZED,
-            'error_message': ErrorMessages.UNAUTHORIZED
+            'status_code': 200,
+            'message': 'Order created successfully'
         }
 
     @staticmethod
-    def get_order_creation_unauthorized():
+    def get_order_creation_failure():
         return {
-            'status_code': StatusCodes.UNAUTHORIZED,
-            'error_message': ErrorMessages.UNAUTHORIZED
+            'status_code': 400,
+            'message': 'Invalid order data'
         }
 
     @staticmethod
-    def get_order_creation_invalid_ingredients():
+    def get_user_orders_success():
         return {
-            'status_code': StatusCodes.FORBIDDEN,
-            'error_message': ErrorMessages.JWT_MALFORMED
+            'status_code': 200,
+            'message': 'User orders retrieved successfully'
         }
 
     @staticmethod
-    def get_user_orders_unauthorized():
+    def get_user_orders_failure():
         return {
-            'status_code': StatusCodes.UNAUTHORIZED,
-            'error_message': ErrorMessages.UNAUTHORIZED
+            'status_code': 401,
+            'message': 'User not authorized'
+        }
+
+    @staticmethod
+    def get_user_update_success():
+        return {
+            'status_code': 200,
+            'message': 'User data updated successfully'
+        }
+
+    @staticmethod
+    def get_user_update_failure():
+        return {
+            'status_code': 401,
+            'message': 'User not authorized'
         } 
