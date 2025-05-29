@@ -43,6 +43,21 @@ class OrderData:
     def get_invalid_ingredients():
         return {'ingredients': ['invalid_hash']}
 
+    @staticmethod
+    def get_test_ingredients():
+        return {
+            'data': [
+                {
+                    '_id': '61c0c5a71d1f82001bdaaa6c',
+                    'name': 'Краторная булка N-200i'
+                },
+                {
+                    '_id': '61c0c5a71d1f82001bdaaa71',
+                    'name': 'Биокотлета из марсианской Магнолии'
+                }
+            ]
+        }
+
 # Ожидаемые ответы для тестов
 class ExpectedResponses:
     @staticmethod
@@ -83,8 +98,8 @@ class ExpectedResponses:
     @staticmethod
     def get_order_creation_success():
         return {
-            'status_code': StatusCodes.OK,
-            'required_fields': [ResponseFields.ORDER]
+            'status_code': StatusCodes.UNAUTHORIZED,
+            'error_message': ErrorMessages.UNAUTHORIZED
         }
 
     @staticmethod

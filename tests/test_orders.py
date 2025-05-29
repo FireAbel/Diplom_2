@@ -14,14 +14,11 @@ class TestOrders:
         self.user_data, response = self.data_manager.create_test_user()
         self.access_token = response.json()['accessToken']
         self.headers = {'Authorization': f'Bearer {self.access_token}'}
-        self.ingredients = self.data_manager.get_ingredients()
+        self.ingredients = OrderData.get_test_ingredients()
         yield
         self.data_manager.cleanup()
 
     def test_create_order_with_auth_and_ingredients(self):
-        if not self.ingredients:
-            pytest.skip('No ingredients available')
-        
         ingredient_ids = [ingredient['_id'] for ingredient in self.ingredients['data'][:2]]
         response = requests.post(
             Endpoints.ORDERS,
@@ -33,18 +30,16 @@ class TestOrders:
         assert expected['error_message'] in response.text, 'Отсутствует сообщение о некорректном jwt'
 
     def test_create_order_without_auth(self):
-        if not self.ingredients:
-            pytest.skip('No ingredients available')
-        
+        # В этом тесте по факту полшучаем статус 200, хотя по документации должны получать 401.
+        # Константин Булатов описал, что это баг самого приложения
         ingredient_ids = [ingredient['_id'] for ingredient in self.ingredients['data'][:2]]
         response = requests.post(
             Endpoints.ORDERS,
             json={'ingredients': ingredient_ids}
         )
         expected = ExpectedResponses.get_order_creation_success()
-        assert response.status_code == expected['status_code'], 'Ожидался код 200 при создании заказа без авторизации'
-        for field in expected['required_fields']:
-            assert field in response.json(), f'В ответе отсутствует поле {field}'
+        assert response.status_code == expected['status_code'], 'Ожидался код 400 при создании заказа без авторизации'
+        assert expected['error_message'] in response.text, 'Отсутствует сообщение о необходимости авторизации'
 
     def test_create_order_without_ingredients(self):
         response = requests.post(
