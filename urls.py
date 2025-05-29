@@ -4,7 +4,7 @@ class Endpoints:
     # Эндпоинты для работы с пользователем
     REGISTER = f"{BASE_URL}/auth/register"  # POST - регистрация пользователя
     LOGIN = f"{BASE_URL}/auth/login"        # POST - авторизация пользователя
-    USER = f"{BASE_URL}/auth/user"          # GET/PATCH - получение/изменение данных пользователя
+    USER = f"{BASE_URL}/auth/user"          # GET/PATCH/DELETE - получение/изменение/удаление данных пользователя
     LOGOUT = f"{BASE_URL}/auth/logout"      # POST - выход из системы
     
     # Эндпоинты для работы с заказами

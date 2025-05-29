@@ -1,7 +1,7 @@
 import random
 import string
 import requests
-from data import Endpoints
+from urls import Endpoints
 
 class UserDataGenerator:
     @staticmethod
@@ -31,7 +31,7 @@ class UserDataGenerator:
 
 class DataManagerHelper:
     def __init__(self):
-        self.base_url = "https://stellarburgers.nomoreparties.site/api"
+        self.base_url = Endpoints.BASE_URL
         self.ingredients = None
 
     def create_test_user(self):
