@@ -1,0 +1,8 @@
+
+Попытка 1 регистрации
+Email: test_2850@example.com
+Регистрация: 200
+Ответ регистрации: {"success":true,"user":{"email":"test_2850@example.com","name":"Test User 4893"},"accessToken":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4M2RjNjA2OWVkMjgwMDAxYjYwN2ViNyIsImlhdCI6MTc0ODg3ODg1NCwiZXhwIjoxNzQ4ODgwMDU0fQ.6pnj2D590zaBu8s8l6a8a3Z5tgRZupNxnjlW1Ib5KG8","refreshToken":"61b458419fa8e3e77fc1a0ccf96b9876026b2780323f714fca831368d0e0ca6376d22cfe152d887d"}
+Авторизация: 200
+Ответ авторизации: {"success":true,"accessToken":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4M2RjNjA2OWVkMjgwMDAxYjYwN2ViNyIsImlhdCI6MTc0ODg3ODg1NSwiZXhwIjoxNzQ4ODgwMDU1fQ.byb2F5Tgk_XWcc1sLlk9HhT1VRlmH21X1ZGzTHNf-Uc","refreshToken":"a4cf7d7709a354699487c758d4829327e382a2dc4737dc175753702aa9a532dab7a96d1083e8af09","user":{"email":"test_2850@example.com","name":"Test User 4893"}}
+Заголовки: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4M2RjNjA2OWVkMjgwMDAxYjYwN2ViNyIsImlhdCI6MTc0ODg3ODg1NSwiZXhwIjoxNzQ4ODgwMDU1fQ.byb2F5Tgk_XWcc1sLlk9HhT1VRlmH21X1ZGzTHNf-Uc'}

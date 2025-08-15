@@ -1,0 +1,11 @@
+
+Попытка 1 регистрации
+Email: test_6140@example.com
+Регистрация: 200
+Ответ регистрации: {"success":true,"user":{"email":"test_6140@example.com","name":"Test User 7791"},"accessToken":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4M2RjNjA2OWVkMjgwMDAxYjYwN2ViNCIsImlhdCI6MTc0ODg3ODg1NCwiZXhwIjoxNzQ4ODgwMDU0fQ.odw8bZz9VfaIvr5nUC__7C8l_8u4xhjkzs7WLgIpb5E","refreshToken":"3f59526283a9e8b0cf6f0f8c2c0867548c72707b7f6a94f7effe201c7f32f42fc52d25e594a27f0e"}
+Авторизация: 200
+Ответ авторизации: {"success":true,"accessToken":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4M2RjNjA2OWVkMjgwMDAxYjYwN2ViNCIsImlhdCI6MTc0ODg3ODg1NCwiZXhwIjoxNzQ4ODgwMDU0fQ.odw8bZz9VfaIvr5nUC__7C8l_8u4xhjkzs7WLgIpb5E","refreshToken":"e50d2f299375f65bee20538b2372eb630ffd1a68230b87923177986064aefe4706d2bedecdf13870","user":{"email":"test_6140@example.com","name":"Test User 7791"}}
+Заголовки: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4M2RjNjA2OWVkMjgwMDAxYjYwN2ViNCIsImlhdCI6MTc0ODg3ODg1NCwiZXhwIjoxNzQ4ODgwMDU0fQ.odw8bZz9VfaIvr5nUC__7C8l_8u4xhjkzs7WLgIpb5E'}
+
+Заголовки запроса: {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4M2RjNjA2OWVkMjgwMDAxYjYwN2ViNCIsImlhdCI6MTc0ODg3ODg1NCwiZXhwIjoxNzQ4ODgwMDU0fQ.odw8bZz9VfaIvr5nUC__7C8l_8u4xhjkzs7WLgIpb5E'}
+Ответ сервера: {"success":true,"user":{"email":"updated_6586@example.com","name":"Updated Name"}}
